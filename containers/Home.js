@@ -48,5 +48,12 @@ export var Home = {
 		e('Corner (in)', t.corner('in')),
 		e('Corner (out)', t.corner('out')),
 		e('Corner (crawl)', t.corner('crawl')),
+		e('Diamond + Slice (left 4)', t.pipe(t.diamond, t.slice({ left: 4 }))),
+		e('Tile (Spiral 3x3)', t.tile(t.spiral(3,3))),
+		e('Rotate (Alternate)', t.rotate(t.pipe(t.horizontal, t.alternate()))),
+		e(
+			'Concatenate (Fan + Reposition, horizontal)',
+			(height, width) => t.fan(height, Math.floor(width/2)).concatenate(t.pipe(t.horizontal, t.reposition)(height, Math.ceil(width/2)), 'horizontal')
+		)
 	]
 };
